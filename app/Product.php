@@ -14,4 +14,26 @@ class Product extends Model
     {
         return $this->belongsTo('App\Branch');
     }
+    
+    /**
+     * Set the price per hour. Convert dollars to cents.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPricePerHourAttribute($value)
+    {
+        $this->attributes['price_per_hour'] = $value * 100;
+    }
+    
+    /**
+     * Get the price per hour. Convert cents to dollars.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function getPricePerHourAttribute($value)
+    {
+        return number_format($value/100, 2, '.', ' ');
+    }
 }

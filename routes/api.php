@@ -20,5 +20,6 @@ Route::group(['prefix' => env('API_CURRENT_VERSION')], function() {
     Route::group(['middleware' => 'auth:api'], function() {
         Route::get('logout', 'Auth\LoginController@logout');
         Route::resource('products', 'ProductController');
+        Route::resource('users', 'UserController');
     });
 });

@@ -26,5 +26,11 @@ class UserActionsTableSeeder extends Seeder
         \App\UserAction::create([
             'name' => 'product.delete',
         ]);
+        \App\UserAction::create([
+            'name' => 'user.showAll',
+        ]);
+        \App\UserAction::create([
+            'name' => 'user.showOne',
+        ]);
     }
 }

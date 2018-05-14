@@ -16,7 +16,7 @@ class Product extends JsonResource
     {      
         return [
             'model' => $this->model,
-            'price_per_hour' => number_format($this->price_per_hour/100, 2, '.', ' ') . ' $',
+            'price_per_hour' => $this->price_per_hour,
             'branch_address' => [
                 'address' => $this->branch->address,
                 'city' => $this->branch->city->name,

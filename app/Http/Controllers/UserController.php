@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\UserAction;
+use App\Http\Resources\User as UserResource;
+use \App\Http\Traits\UserRolesTrait;
 
 class UserController extends Controller
 {
+    use UserRolesTrait;
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $userAction = UserAction::where('name', 'user.showAll')->first();
+        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+        return UserResource::collection(User::all());
     }
 
     /**
@@ -33,9 +41,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $userAction = UserAction::where('name', 'user.showOne')->first();
+        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+        return new ProductResource(Product::findOrFail($id));
     }
 
     /**
