@@ -25,17 +25,6 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -57,17 +46,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $userAction = UserAction::where('name', 'user.update')->first();
+        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+        $request->validate([
+            'name' => 'min:3|regex:/^[a-zA-Z\-\s]+$/',
+            'email' => 'email',
+            'password' => 'min:6',
+            'phone' => 'regex:/^[0-9]{12}+$/',
+            'role_id' => 'numeric',
+            'is_active' => 'numeric',
+        ]);
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return response()->json($user, 200);
     }
 }

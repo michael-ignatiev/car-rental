@@ -32,4 +32,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\UserRole');
     }
+    
+    /**
+     * Set the price per hour. Convert dollars to cents.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

@@ -32,5 +32,8 @@ class UserActionsTableSeeder extends Seeder
         \App\UserAction::create([
             'name' => 'user.showOne',
         ]);
+        \App\UserAction::create([
+            'name' => 'user.update',
+        ]);
     }
 }

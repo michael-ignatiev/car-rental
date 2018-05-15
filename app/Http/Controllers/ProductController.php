@@ -36,9 +36,9 @@ class ProductController extends Controller
         $userAction = UserAction::where('name', 'product.store')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         $request->validate([
-            'model' => 'required',
+            'model' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
             'branch_id' => 'required|numeric',
-            'price_per_hour' => 'required',
+            'price_per_hour' => 'required|regex:/^[0-9\.]+$/',
             'product_type_id' => 'required|numeric',
             'is_active' => 'required|numeric',
         ]);
@@ -72,11 +72,11 @@ class ProductController extends Controller
         $userAction = UserAction::where('name', 'product.update')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         $request->validate([
-            'model' => 'required',
-            'branch_id' => 'required|numeric',
-            'price_per_hour' => 'required',
-            'product_type_id' => 'required|numeric',
-            'is_active' => 'required|numeric',
+            'model' => 'regex:/^[a-zA-Z0-9\s]+$/',
+            'branch_id' => 'numeric',
+            'price_per_hour' => 'regex:/^[0-9\.]+$/',
+            'product_type_id' => 'numeric',
+            'is_active' => 'numeric',
         ]);
         $product = Product::findOrFail($id);
         $product->update($request->all());
