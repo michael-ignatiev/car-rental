@@ -5,7 +5,7 @@ namespace App\Http\Traits;
 trait UserRolesTrait {
     
     /**
-     * Compare user's role with the allowed ones.
+     * Compare user's role with the allowed ones in order to check his permission for requested action.
      * 
      * @param string $userRole
      * @param array $allowedRoles

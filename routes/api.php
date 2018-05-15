@@ -21,5 +21,6 @@ Route::group(['prefix' => env('API_CURRENT_VERSION')], function() {
         Route::get('logout', 'Auth\LoginController@logout');
         Route::resource('products', 'ProductController');
         Route::resource('users', 'UserController');
+        Route::resource('branches', 'BranchController');
     });
 });

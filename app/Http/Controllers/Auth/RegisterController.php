@@ -51,7 +51,7 @@ class RegisterController extends Controller
             ]);
             return json_decode((string)$response->getBody(), true);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'invalid credentials'], 401);
+            return response()->json(['error' => $e->getMessage()], 401);
         }
     }
 
@@ -63,11 +63,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return User::create($data);
     }
 }
