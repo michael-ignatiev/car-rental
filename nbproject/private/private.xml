@@ -6,9 +6,12 @@
             <file>file:/E:/OSPanel/domains/car-rental/app/Http/Resources/Product.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/database/seeds/UserActionsTableSeeder.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/app/Http/Resources/Branch.php</file>
+            <file>file:/E:/OSPanel/domains/car-rental/app/Rules/Price.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/database/seeds/UserActionUserRoleTableSeeder.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/app/Http/Controllers/ProductController.php</file>
+            <file>file:/E:/OSPanel/domains/car-rental/app/Http/Controllers/OrderController.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/app/Branch.php</file>
+            <file>file:/E:/OSPanel/domains/car-rental/app/Order.php</file>
             <file>file:/E:/OSPanel/domains/car-rental/app/Http/Controllers/BranchController.php</file>
         </group>
     </open-files>

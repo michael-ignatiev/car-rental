@@ -27,8 +27,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:6',
+            'email' => ['required', 'email', 'exists:users,email'],
+            'password' => ['required', 'min:6'],
         ]);
         try{
             $http = new GuzzleClient;

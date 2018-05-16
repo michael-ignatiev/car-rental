@@ -28,11 +28,11 @@ class RegisterController extends Controller
     public function register(Request $request)
     {    
         $request->validate([
-            'name' => 'required|min:3|regex:/^[a-zA-Z\-\s]+$/',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|regex:/^[0-9]{12}+$/',
-            'password' => 'required|min:6',
-            'c_password' => 'same:password'
+            'name' => ['required', 'min:3', 'regex:/^[a-zA-Z\-\s]+$/'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'phone' => ['required', 'regex:/^[0-9]{12}+$/'],
+            'password' => ['required', 'min:6'],
+            'c_password' => ['same:password'],
         ]);
 
         try {

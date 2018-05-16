@@ -44,5 +44,17 @@ class UserActionsTableSeeder extends Seeder
         \App\UserAction::create([
             'name' => 'branch.update',
         ]);
+        \App\UserAction::create([
+            'name' => 'order.showAll',
+        ]);
+        \App\UserAction::create([
+            'name' => 'order.showOne',
+        ]);
+        \App\UserAction::create([
+            'name' => 'order.update',
+        ]);
+        \App\UserAction::create([
+            'name' => 'order.store',
+        ]);
     }
 }

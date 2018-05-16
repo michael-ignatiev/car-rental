@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('branch_to_take_from_id')->comment('Branch from which car was taken');
-            $table->unsignedInteger('branch_to_return_to_id')->comment('Branch to which car was returned');
+            $table->unsignedInteger('branch_to_return_to_id')->nullable()->comment('Branch to which car was returned');
             $table->unsignedInteger('rental_plan_id');
             $table->unsignedInteger('payment_type_id');
             $table->unsignedInteger('payment_status_id');

@@ -22,5 +22,6 @@ Route::group(['prefix' => env('API_CURRENT_VERSION')], function() {
         Route::resource('products', 'ProductController');
         Route::resource('users', 'UserController');
         Route::resource('branches', 'BranchController');
+        Route::resource('orders', 'OrderController');
     });
 });

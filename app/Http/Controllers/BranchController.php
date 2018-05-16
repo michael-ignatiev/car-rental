@@ -34,9 +34,9 @@ class BranchController extends Controller
         $userAction = UserAction::where('name', 'branch.store')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         $request->validate([
-            'address' => 'required',
-            'city_id' => 'required|numeric',
-            'is_active' => 'required|numeric',
+            'address' => ['required'],
+            'city_id' => ['required', 'numeric'],
+            'is_active' => ['required', 'numeric'],
         ]);
         $branch = new Branch();
         $storedBranch = $branch->create($request->all());
@@ -68,9 +68,9 @@ class BranchController extends Controller
         $userAction = UserAction::where('name', 'branch.update')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         $request->validate([
-            'address' => 'required',
-            'city_id' => 'required|numeric',
-            'is_active' => 'required|numeric',
+            'address' => ['required'],
+            'city_id' => ['required', 'numeric'],
+            'is_active' => ['required', 'numeric'],
         ]);
         $branch = Branch::findOrFail($id);
         $branch->update($request->all());
