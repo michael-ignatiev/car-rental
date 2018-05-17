@@ -5,7 +5,7 @@
 
 # Car Rental
 
-Scalable RESTful API which provides functionality for car rental network. Authenticated users can choose and rent a car from list of available rental branches.
+Scalable RESTful API which provides management functionality for car rental network. Authenticated users can choose and rent a car from list of available rental branches.
 
 Web application built on Laravel framework. Authentication implemented with OAuth protocol. 
 Also implemented RBAC (Role Based Access Control).
