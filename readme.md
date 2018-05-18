@@ -1,3 +1,4 @@
+
 <p align="center">
 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="50">
 </p>
@@ -47,9 +48,6 @@ PASSWORD_CLIENT_ID=2
 PASSWORD_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ``` 
 11. `php artisan serve` 
-
-### Run PHP Server
-`php artisan serve`
 
 ## Built With
 
