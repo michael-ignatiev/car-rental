@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="50">
 </p>
@@ -33,26 +32,24 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. `git clone git@github.com:michael-ignatiev/car-rental.git project-folder`
 2. `composer install && composer update`
-3. `php artisan key:generate`
-4. update db connection credentials in the `.env` file
-5. `php artisan migrate`
-6. also add to `.env` file the following setting `API_CURRENT_VERSION=v1`
-7. `php artisan db:seed`
-8. `php artisan passport:install`
-9. copy generated keys and paste to .env file:
+3. `php -r "copy('.env.example', '.env');"`
+4. `php artisan key:generate`
+5. update db connection credentials in the `.env` file
+6. `php artisan migrate`
+7. also add to `.env` file the following setting `API_CURRENT_VERSION=v1`
+8. `php artisan db:seed`
+9. `php artisan passport:install`
+10. copy generated keys and paste to .env file:
 ```
 PERSONAL_CLIENT_ID=1
 PERSONAL_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 PASSWORD_CLIENT_ID=2
 PASSWORD_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+``` 
+11. `php artisan serve` 
 
 ### Run PHP Server
 `php artisan serve`
-
-### Compile assets for React
-
-One time compiling `npm run dev` or runtime compiling `npm run watch`
 
 ## Built With
 
