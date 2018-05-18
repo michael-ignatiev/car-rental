@@ -5,7 +5,7 @@
 
 # Car Rental
 
-Scalable RESTful API which provides management functionality for car rental network. Authenticated users can choose and rent a car from list of available rental branches.
+Scalable RESTful API which provides functionality for car rental network. Authenticated users can choose and rent a car from list of available rental branches.
 
 Web application built on Laravel framework. Authentication implemented with OAuth protocol. 
 Also implemented RBAC (Role Based Access Control).
@@ -35,8 +35,9 @@ These instructions will get you a copy of the project up and running on your loc
 2. `composer install && composer update`
 3. `php artisan key:generate`
 4. `php artisan migrate`
-5. `php artisan db:seed`
-6. `update db connection credentials in the .env file`
+5. update db connection credentials in the `.env` file
+6. also add to `.env` file the following setting `API_CURRENT_VERSION=v1`
+7. `php artisan db:seed`
 
 ### Installing Passport
 
