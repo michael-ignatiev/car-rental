@@ -34,15 +34,12 @@ These instructions will get you a copy of the project up and running on your loc
 1. `git clone git@github.com:michael-ignatiev/car-rental.git project-folder`
 2. `composer install && composer update`
 3. `php artisan key:generate`
-4. `php artisan migrate`
-5. update db connection credentials in the `.env` file
+4. update db connection credentials in the `.env` file
+5. `php artisan migrate`
 6. also add to `.env` file the following setting `API_CURRENT_VERSION=v1`
 7. `php artisan db:seed`
-
-### Installing Passport
-
-* `php artisan passport:install`
-* copy generated keys and paste to .env file:
+8. `php artisan passport:install`
+9. copy generated keys and paste to .env file:
 ```
 PERSONAL_CLIENT_ID=1
 PERSONAL_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
