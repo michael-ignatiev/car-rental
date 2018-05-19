@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $userAction = UserAction::where('name', 'user.showOne')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
-        return new ProductResource(Product::findOrFail($id));
+        return new UserResource(User::findOrFail($id));
     }
 
     /**
