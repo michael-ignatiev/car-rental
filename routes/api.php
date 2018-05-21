@@ -23,5 +23,8 @@ Route::group(['prefix' => env('API_CURRENT_VERSION')], function() {
         Route::resource('users', 'UserController');
         Route::resource('branches', 'BranchController');
         Route::resource('orders', 'OrderController');
+        
+        Route::get('users/{id}/orders', 'UserController@showOrders');
+        Route::get('branches/{id}/products', 'BranchController@showProducts');
     });
 });

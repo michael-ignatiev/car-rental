@@ -6,6 +6,7 @@ use App\Branch;
 use App\UserAction;
 use Illuminate\Http\Request;
 use App\Http\Resources\Branch as BranchResource;
+use App\Http\Resources\Product as ProductResource;
 use \App\Http\Traits\UserRolesTrait;
 
 class BranchController extends Controller
@@ -14,6 +15,7 @@ class BranchController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -46,6 +48,7 @@ class BranchController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -54,6 +57,19 @@ class BranchController extends Controller
         $userAction = UserAction::where('name', 'branch.showOne')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         return new BranchResource(Branch::findOrFail($id));
+    }
+    
+    /**
+     * Display related resources for the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showProducts(Request $request, $id) {
+        $userAction = UserAction::where('name', 'branch.showProducts')->first();
+        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+        return ProductResource::collection(Branch::findOrFail($id)->product);
     }
 
     /**

@@ -19,4 +19,8 @@ class Branch extends Model
     {
         return $this->belongsTo('App\City');
     }
+    
+    public function product() {
+        return $this->hasMany('App\Product');
+    }
 }

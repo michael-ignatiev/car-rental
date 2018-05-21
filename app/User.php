@@ -33,6 +33,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserRole');
     }
     
+    public function order() {
+        return $this->hasMany('App\Order');
+    }
+    
     /**
      * Set the price per hour. Convert dollars to cents.
      *

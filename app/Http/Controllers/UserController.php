@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserAction;
 use App\Http\Resources\User as UserResource;
+use App\Http\Resources\Order as OrderResource;
 use \App\Http\Traits\UserRolesTrait;
 
 class UserController extends Controller
@@ -15,6 +16,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -27,6 +29,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -35,6 +38,19 @@ class UserController extends Controller
         $userAction = UserAction::where('name', 'user.showOne')->first();
         $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         return new UserResource(User::findOrFail($id));
+    }
+    
+    /**
+     * Display related resources for the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrders(Request $request, $id) {
+        $userAction = UserAction::where('name', 'user.showOrders')->first();
+        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+        return OrderResource::collection(User::findOrFail($id)->order);
     }
 
     /**
