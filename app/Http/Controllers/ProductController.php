@@ -70,16 +70,4 @@ class ProductController extends Controller
         $product->update($request->all());
         return new ProductResource($product);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Product::findOrFail($id)->delete();
-        return response()->json([], 204);
-    }
 }
