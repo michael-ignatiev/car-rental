@@ -4,52 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\UserAction;
 use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Order as OrderResource;
-use \App\Http\Traits\UserRolesTrait;
 
 class UserController extends Controller
-{
-    use UserRolesTrait;
-    
+{ 
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $userAction = UserAction::where('name', 'user.showAll')->first();
-        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         return UserResource::collection(User::all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show($id)
     {
-        $userAction = UserAction::where('name', 'user.showOne')->first();
-        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         return new UserResource(User::findOrFail($id));
     }
     
     /**
      * Display related resources for the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showOrders(Request $request, $id) {
-        $userAction = UserAction::where('name', 'user.showOrders')->first();
-        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
+    public function showOrders($id) {
         return OrderResource::collection(User::findOrFail($id)->order);
     }
 
@@ -62,8 +49,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userAction = UserAction::where('name', 'user.update')->first();
-        $this->checkActionPermission($request->user()->role->name, $userAction->roles);
         $request->validate([
             'name' => 'min:3|regex:/^[a-zA-Z\-\s]+$/',
             'email' => 'email',
@@ -74,6 +59,6 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return response()->json($user, 200);
+        return new UserResource($user);
     }
 }

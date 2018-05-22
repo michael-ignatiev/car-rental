@@ -22,7 +22,7 @@ User with respective access rights has ability to manage any entity of the syste
 * orders
 
 Web application built on Laravel framework. Authentication uses OAuth protocol. 
-Also implemented RBAC (Role Based Access Control).
+Also there is implemented RBAC (Role Based Access Control) as an additional middleware.
 Extended validation rules during order creation ensures that correct price provided by the user.
 
 ## Getting Started
