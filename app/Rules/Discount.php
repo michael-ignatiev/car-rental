@@ -26,7 +26,10 @@ class Discount implements Rule
      */
     public function passes($attribute, $value)
     {
-        return DiscountModel::where(['id' => $value, 'is_active' => 1])->first();
+        return DiscountModel::where(['id' => $value, 'is_active' => 1])
+                ->where('activity_start', '<=', \Carbon\Carbon::now())
+                ->where('activity_end', '>=', \Carbon\Carbon::now())
+                ->first();
     }
 
     /**
